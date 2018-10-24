@@ -8,7 +8,7 @@
       <th>Nombre</th>
       <th>Descripcion</th>
       <th>Precio</th>
-      <th colspan="3"></th>
+      <th colspan="7"></th>
     </tr>
   </thead>
 
@@ -20,22 +20,22 @@
             <td><%= product.name %></td>
             <td><%= product.description %></td>
             <td><%= product.price %></td>
-            <td><%= link_to 'Ver', product %></td>
-            <td><%= link_to 'Editar', edit_product_path(product) %></td>
-            <td><%= link_to 'Destruir', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <td><%= link_to 'Comprar', products_success_path(id: product.id, sold: true), method: :post %></td>
+            <td><%= link_to 'Ver', product, class: 'btn btn-success' %></td>
+            <td><%= link_to 'Editar', edit_product_path(product), class: 'btn btn-success' %></td>
+            <td><%= link_to 'Destruir', product, class: 'btn btn-success', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Comprar', products_success_path(id: product.id, sold: true), class: 'btn btn-success', method: :post %></td>
             <% end %>
           <% else %>
             <%if product.sold == nil%>
             <td><%= product.name %></td>
             <td><%= product.description %></td>
             <td><%= product.price %></td>
-            <td><%= link_to 'Ver', product %></td>
-            <td><%= link_to 'Loggeate para comprar', new_user_session_path %></td>
+            <td><%= link_to 'Ver', product, class: 'btn btn-success' %></td>
+            <td><%= link_to 'Loggeate para comprar', new_user_session_path, class: 'btn btn-success' %></td>
             <% end %>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Nuevo Producto', new_product_path %>
+<%= link_to 'Nuevo Producto', new_product_path, class: 'btn btn-warning' %>

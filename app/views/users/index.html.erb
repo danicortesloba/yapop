@@ -19,10 +19,10 @@
   </tbody>
 </table>
 <% else %>
-    <p><%= link_to 'Debes loggearte aquí para ver los usuarios', new_user_session_path %></p>
+    <p><%= link_to 'Debes loggearte aquí para ver los usuarios', new_user_session_path, class: 'btn btn-success' %></p>
 <% end %>
 
 
 
 
-<p><%= link_to 'Nuevo Usuario', new_user_registration_path %></p>
+<p><%= link_to 'Nuevo Usuario', new_user_registration_path, class: 'btn btn-warning' %></p>
