@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Productos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th>Precio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+          <%if user_signed_in?%>
+            <%if product.sold == nil%>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to 'Ver', product %></td>
+            <td><%= link_to 'Editar', edit_product_path(product) %></td>
+            <td><%= link_to 'Destruir', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Comprar', products_success_path(id: product.id, sold: true), method: :post %></td>
+            <% end %>
+          <% else %>
+            <%if product.sold == nil%>
+            <td><%= product.name %></td>
+            <td><%= product.description %></td>
+            <td><%= product.price %></td>
+            <td><%= link_to 'Ver', product %></td>
+            <td><%= link_to 'Loggeate para comprar', new_user_session_path %></td>
+            <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Nuevo Producto', new_product_path %>
